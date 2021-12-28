@@ -1,9 +1,9 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import Head from 'next/head'
-import Post from '../components/post'
-import { sortByDate } from '../utils'
+import fs from "fs-extra";
+import path from "path";
+import matter from "gray-matter";
+import Head from "next/head";
+import { sortByDate, retrieveAllMdFiles, buildLink } from "../utils";
+import { Card } from "../components/card";
 
 export default function Home({ posts }) {
   return (
@@ -11,42 +11,39 @@ export default function Home({ posts }) {
       <Head>
         <title>Dev Blog</title>
       </Head>
-
-      <div className='posts'>
+      <div>
         {posts.map((post, index) => (
-          <Post key={index} post={post} />
+          <Card key={index} card={post}></Card>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export async function getStaticProps() {
   // Get files from the posts dir
-  const files = fs.readdirSync(path.join('posts'))
+  const paths = [];
+  retrieveAllMdFiles(path.join("posts"), paths);
 
   // Get slug and frontmatter from posts
-  const posts = files.map((filename) => {
+  const posts = paths.map((currentPath) => {
+    const filename = currentPath.split("/").pop();
     // Create slug
-    const slug = filename.replace('.md', '')
-
+    const slug = filename.replace(/.md$/, "");
     // Get frontmatter
-    const markdownWithMeta = fs.readFileSync(
-      path.join('posts', filename),
-      'utf-8'
-    )
+    const markdownWithMeta = fs.readFileSync(currentPath, "utf-8");
 
-    const { data: frontmatter } = matter(markdownWithMeta)
-
+    const { data: frontmatter } = matter(markdownWithMeta);
     return {
       slug,
       frontmatter,
-    }
-  })
+      link: buildLink(currentPath),
+    };
+  });
 
   return {
     props: {
       posts: posts.sort(sortByDate),
     },
-  }
+  };
 }

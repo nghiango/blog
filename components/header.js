@@ -50,22 +50,22 @@ function classNames(...classes) {
 
 export default function Header() {
   return (
-    <Popover className="relative bg-white">
-      <div className="mx-auto px-4 sm:px-6">
+    <Popover className="fixed bg-white w-full">
+      <div className="mx-auto px-4 sm:px-6 position-fixed">
         <div className="flex items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start">
             <Popover className="relative">
               {({ open }) => (
                 <Link href="/">
-                  <a
+                  <span
                     className={classNames(
                       open ? "text-gray-900" : "text-gray-500",
-                      "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      "cursor-pointer group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     )}
                   >
                     <HomeIcon className="h-9 w-9 mr-2" />{" "}
                     <span className="text-xl pt-1">HOME</span>
-                  </a>
+                  </span>
                 </Link>
               )}
             </Popover>
