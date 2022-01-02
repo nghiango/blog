@@ -1,3 +1,27 @@
 @tailwind base;
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-blue-600 underline;
+  }
+}
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .page-detail__header {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .page-detail__title {
+    font-size: 3.2em;
+  }
+}

@@ -11,7 +11,7 @@ export default function Home({ posts }) {
       <Head>
         <title>Dev Blog</title>
       </Head>
-      <div className="container w-100 lg:w-4/5 mx-auto flex flex-col">
+      <div>
         {posts.map((post, index) => (
           <Card key={index} card={post}></Card>
         ))}

@@ -14,6 +14,9 @@ export function Card({ card }) {
           <h3 className="font-semibold text-lg leading-tight truncate">
             {card.frontmatter.title}
           </h3>
+          <span className="inline-flex w-fit justify-center px-2 py-1 text-xs font-bold leading-none text-indigo-100 bg-indigo-700 rounded">
+            {card.frontmatter.tag}
+          </span>
           <p className="mt-2">{card.frontmatter.excerpt}</p>
           <div className="flex justify-between">
             <p className="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
