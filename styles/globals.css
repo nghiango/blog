@@ -2,12 +2,15 @@
 @layer base {
   h1 {
     @apply text-2xl;
+    line-height: normal;
   }
   h2 {
     @apply text-xl;
+    line-height: normal;
   }
   h3 {
     @apply text-lg;
+    line-height: normal;
   }
   a {
     @apply text-blue-600 underline;
@@ -17,6 +20,9 @@
 @tailwind utilities;
 
 @layer components {
+  .page__container {
+    background-color: #ededef;
+  }
   .page-detail__header {
     max-width: 800px;
     margin: 0 auto;

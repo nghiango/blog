@@ -3,12 +3,12 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <div className="page__container">
       <Header />
-      <main className="container w-100 lg:w-4/5 mx-auto flex flex-col">
+      <main className="container w-100 lg:w-8/12 mx-auto flex flex-col py-16">
         <Component {...pageProps} />
       </main>
-    </>
+    </div>
   );
 }
 
