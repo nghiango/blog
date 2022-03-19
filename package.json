@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export && git add out && git commit -m 'update static page' && git push",
+    "build": "next build && next export && git add -f out && git commit -m 'update static page' && git push",
     "start": "next start",
     "lint": "next lint"
   },
