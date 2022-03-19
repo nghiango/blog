@@ -1,15 +1,27 @@
 @tailwind base;
 @layer base {
   h1 {
-    @apply text-2xl;
+    font-size: 2em;
     line-height: normal;
   }
   h2 {
-    @apply text-xl;
+    font-size: 1.5em;
     line-height: normal;
   }
   h3 {
-    @apply text-lg;
+    font-size: 1.17em;
+    line-height: normal;
+  }
+  h4 {
+    font-size: 1em;
+    line-height: normal;
+  }
+  h5 {
+    font-size: 0.83em;
+    line-height: normal;
+  }
+  h6 {
+    font-size: 0.67em;
     line-height: normal;
   }
   a {
@@ -20,8 +32,29 @@
 @tailwind utilities;
 
 @layer components {
+  .post--padding {
+    padding: 0 12%
+  }
+  .post__title {
+    font-size: 3.2em;
+    font-weight: 900;
+    line-height:1.2;
+    margin-bottom: 50px;
+  }
+  .post__author {
+    margin-bottom: 50px;
+    color: #666;
+  }
+  .post__image-cover {
+    border-radius: 10px;
+    width: 85%;
+    margin: auto
+  }
+  .post__header {
+    margin-bottom: 50px;
+  }
   .page__container {
-    background-color: #ededef;
+    background-color: #f7f8f9;
   }
   .page-detail__header {
     max-width: 800px;

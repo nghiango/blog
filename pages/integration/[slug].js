@@ -1,60 +1,15 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { marked } from 'marked'
-import Link from 'next/link'
+import { getPath, buildStaticPath, buildStaticProps } from "../../services/utils.service";
+import { PostDetail } from "../../components/post-detail";
 
-export default function PostPage({
-  frontmatter: { title, date, cover_image },
-  slug,
-  content,
-}) {
-    const htmlContent = marked.parse(content);
-  return (
-    <>
-      <Link href='/'>
-        <a className='btn btn-back'>Go Back</a>
-      </Link>
-      <div className='card card-page'>
-        <h1 className='post-title'>{title}</h1>
-        <div className='post-date'>Posted on {date}</div>
-        <img src={cover_image} alt='' />
-        <div className='post-body'>
-          <div dangerouslySetInnerHTML={{ __html:  htmlContent}}></div>
-        </div>
-      </div>
-    </>
-  )
-}
+export default PostDetail;
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join('posts/integration'))
-
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace('.md', ''),
-    },
-  }))
-
-  return {
-    paths,
-    fallback: false,
-  }
+  const pathName = getPath(__dirname);
+  return buildStaticPath(pathName);
 }
 
+
 export async function getStaticProps({ params: { slug } }) {
-  const markdownWithMeta = fs.readFileSync(
-    path.join('posts/integration', slug + '.md'),
-    'utf-8'
-  )
-
-  const { data: frontmatter, content } = matter(markdownWithMeta)
-
-  return {
-    props: {
-      frontmatter,
-      slug,
-      content,
-    },
-  }
+  const pathName = getPath(__dirname);
+  return buildStaticProps(pathName, slug);
 }

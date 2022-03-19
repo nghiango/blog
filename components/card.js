@@ -11,9 +11,11 @@ export function Card({ card }) {
         </div>
 
         <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
-          <h3 className="font-semibold text-lg leading-tight truncate">
-            {card.frontmatter.title}
-          </h3>
+          <Link href={`${card.link}`} passHref>
+            <h3 className="font-semibold text-lg leading-tight truncate cursor-pointer">
+              {card.frontmatter.title}
+            </h3>
+          </Link>
           <span className="inline-flex w-fit justify-center px-2 py-1 text-xs font-bold leading-none text-indigo-100 bg-indigo-700 rounded">
             {card.frontmatter.tag}
           </span>
