@@ -18,7 +18,7 @@ export function PostDetail({
             </div>
             <img
               className="post__image-cover"
-              src={cover_image}
+              src={`${process.env.BASE_PATH}${cover_image}`}
               alt="image-cover"
             />
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 export function Card({ card }) {
   return (
     <>
@@ -6,7 +7,7 @@ export function Card({ card }) {
         <div className="h-64 w-auto md:w-1/2">
           <img
             className="inset-0 h-full w-full object-cover object-center"
-            src={card.frontmatter.cover_image}
+            src={`${process.env.BASE_PATH}${card.frontmatter.cover_image}`}
           />
         </div>
 
