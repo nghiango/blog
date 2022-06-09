@@ -13,7 +13,7 @@ export function Card({ card }) {
 
         <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
           <Link href={`${card.link}`} passHref>
-            <h3 className="font-semibold text-lg leading-tight truncate cursor-pointer">
+            <h3 className="font-semibold text-2xl leading-tight truncate cursor-pointer">
               {card.frontmatter.title}
             </h3>
           </Link>

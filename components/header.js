@@ -1,7 +1,12 @@
 import { Popover, Transition } from "@headlessui/react";
 import {
-  BookmarkAltIcon, HomeIcon, MenuIcon, RefreshIcon,
-  ShieldCheckIcon, ViewGridIcon, XIcon
+  BookmarkAltIcon,
+  HomeIcon,
+  MenuIcon,
+  RefreshIcon,
+  ShieldCheckIcon,
+  ViewGridIcon,
+  XIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
@@ -9,46 +14,44 @@ import { Fragment } from "react";
 const resources = [
   {
     name: "Guides",
-    description:
-      "Learn how to maximize our platform to get the most out of it.",
-    href: "#",
+    description: "Guide you how implement concepts that I know",
+    href: "/?guides=true",
     icon: BookmarkAltIcon,
   },
   {
     name: "Security",
-    description: "Understand how we take your privacy seriously.",
-    href: "#",
+    description: "Show you some security information",
+    href: "/?security=true",
     icon: ShieldCheckIcon,
   },
   {
     name: "Integrations",
-    description: "Connect with third-party tools that you're already using.",
+    description: "Some issue when integrate Front end and backend",
     href: "#",
     icon: ViewGridIcon,
   },
   {
     name: "Automations",
-    description:
-      "Build strategic funnels that will drive your customers to convert",
+    description: "Show you the CI/CD that I have the knowledge",
     href: "#",
     icon: RefreshIcon,
   },
 ];
-const recentPosts = [
-  { id: 1, name: "Boost your conversion rate", href: "#" },
-  {
-    id: 2,
-    name: "How to use search engine optimization to drive traffic to your site",
-    href: "#",
-  },
-  { id: 3, name: "Improve your customer experience", href: "#" },
-];
+// const recentPosts = [
+//   { id: 1, name: "Boost your conversion rate", href: "#" },
+//   {
+//     id: 2,
+//     name: "How to use search engine optimization to drive traffic to your site",
+//     href: "#",
+//   },
+//   { id: 3, name: "Improve your customer experience", href: "#" },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header() {
+export default function Header({ what }) {
   return (
     <Popover className="fixed bg-white w-full">
       <div className="mx-auto px-4 sm:px-6 position-fixed">
@@ -69,12 +72,6 @@ export default function Header() {
                 </Link>
               )}
             </Popover>
-          </div>
-          <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              <span className="sr-only">Open menu</span>
-              <MenuIcon className="h-6 w-6" aria-hidden="true" />
-            </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
             <Popover className="relative">
@@ -129,7 +126,8 @@ export default function Header() {
                             </a>
                           ))}
                         </div>
-                        <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
+                        {/* TODO: Recents post should be handle later after core function finished */}
+                        {/* <div className="px-5 py-5 bg-gray-50 sm:px-8 sm:py-8">
                           <div>
                             <h3 className="text-sm tracking-wide font-medium text-gray-500 uppercase">
                               Recent Posts
@@ -160,10 +158,30 @@ export default function Header() {
                               <span aria-hidden="true">&rarr;</span>
                             </a>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </Popover.Panel>
                   </Transition>
+                </>
+              )}
+            </Popover>
+          </Popover.Group>
+
+          <Popover.Group as="nav" className="hidden md:flex space-x-10">
+            <Popover className="relative">
+              {({ open }) => (
+                <>
+                  <Popover.Button
+                    className={classNames(
+                      open ? "text-gray-900" : "text-gray-500",
+                      "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    )}
+                  >
+                    
+                    <Link href="/info/about-me">
+                    <span>About me</span>
+                    </Link>
+                  </Popover.Button>
                 </>
               )}
             </Popover>
@@ -250,28 +268,27 @@ export default function Header() {
 }
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join('posts'))
+  const files = fs.readdirSync(path.join("posts"));
 
   const paths = files.map((filename) => ({
     params: {
-      slug: filename.replace('.md', ''),
+      slug: filename.replace(".md", ""),
     },
-  }))
+  }));
 
   return {
     paths,
     fallback: false,
-  }
+  };
 }
 
 export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(
-    path.join('posts', slug + '.md'),
-    'utf-8'
-  )
+    path.join("posts", slug + ".md"),
+    "utf-8"
+  );
 
-  const { data: frontmatter, content } = matter(markdownWithMeta)
-  console.log(content);
+  const { data: frontmatter, content } = matter(markdownWithMeta);
 
   return {
     props: {
@@ -279,5 +296,5 @@ export async function getStaticProps({ params: { slug } }) {
       slug,
       content,
     },
-  }
+  };
 }
