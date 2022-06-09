@@ -12,7 +12,7 @@ module.exports = {
     ]
   },
   env: {
-    BASE_PATH: basePath,
+    BASE_PATH: '',
 },
 images: {
   loader: 'akamai',
@@ -20,6 +20,6 @@ images: {
 },
   reactStrictMode: true,
   distDir: 'build',
-  assetPrefix: `${basePath}/`,
+  assetPrefix: '/',
   basePath: basePath
 }
