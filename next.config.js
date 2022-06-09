@@ -1,7 +1,7 @@
 const  { 
   NODE_ENV
 } = process.env;
-const basePath = NODE_ENV === 'production' ? '' : '';
+const basePath = NODE_ENV === 'production' ? '/blog' : '';
 module.exports = {
     async rewrites() {
     return [
