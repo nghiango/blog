@@ -21,5 +21,5 @@ images: {
   reactStrictMode: true,
   distDir: 'build',
   assetPrefix: '/',
-  basePath: basePath
+  basePath: ''
 }

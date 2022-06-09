@@ -74,7 +74,7 @@ A Node.js app runs in a single thread, non-bloking I/O
 
 - In the end of this [topic](https://nodejs.org/en/docs/guides/dont-block-the-event-loop/), we can see that Node.js has two types of threads: Event loop and `k` Workers. Therefore, why it called single thread when they have multiple workers to running the tasks including non-blocking I/O and CPU-intensive work.
 
-  ![event-loop](/blog/images/posts/how-you-understand-nodejs/event-loop.png)
+  ![event-loop](/images/posts/how-you-understand-nodejs/event-loop.png)
 
 <details>
 <summary>Answer</summary>
@@ -83,7 +83,7 @@ A Node.js app runs in a single thread, non-bloking I/O
 
 ## Nodejs processes and thread
 
-![multiple-process](/blog/images/posts/how-you-understand-nodejs/multiple-process.png)
+![multiple-process](/images/posts/how-you-understand-nodejs/multiple-process.png)
 
 - Nodejs child process
   - Share memory: event emiter
