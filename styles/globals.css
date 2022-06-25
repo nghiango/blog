@@ -63,4 +63,18 @@
   .page-detail__title {
     font-size: 3.2em;
   }
+  .code-block__block {
+    position: relative;
+  }
+  .code-block__copy-func {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 20px;
+    color: #bcbcbc;
+    cursor: pointer;
+  }
+  .code-block__copy-func:hover {
+    color: #fff;
+  }
 }
