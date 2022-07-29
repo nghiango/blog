@@ -53,7 +53,7 @@ function classNames(...classes) {
 
 export default function Header({ what }) {
   return (
-    <Popover className="fixed bg-white w-full">
+    <Popover className="fixed bg-white w-full z-10">
       <div className="mx-auto px-4 sm:px-6 position-fixed">
         <div className="flex items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start">
