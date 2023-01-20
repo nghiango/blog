@@ -24,9 +24,6 @@
     font-size: 0.67em;
     line-height: normal;
   }
-  a {
-    @apply text-blue-600 underline;
-  }
 }
 @tailwind components;
 @tailwind utilities;
