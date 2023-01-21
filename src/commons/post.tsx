@@ -1,17 +1,19 @@
+
+import { PostWrapper } from "@/stores/postStore";
+import { formatDate } from "@/utils/clientUtils.service";
 import Link from "next/link";
 import React from "react";
-import { formatDate } from "../utils";
 
-export default function Post({ post }) {
+export default function Post({ post }: PostWrapper) {
   return (
     <div className="card">
       <div className="post-date">
-        Posted on {formatDate(post.frontmatter.date)}
+        Posted on {formatDate(post.metaData.date)}
       </div>
 
-      <h3>{post.frontmatter.title}</h3>
+      <h3>{post.metaData.title}</h3>
 
-      <p>{post.frontmatter.excerpt}</p>
+      <p>{post.metaData.excerpt}</p>
 
       <Link href={`/${post.slug}`}>
         <a className="btn">Read More</a>

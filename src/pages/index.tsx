@@ -1,38 +1,22 @@
 import Head from 'next/head'
-import {
-  Container,
-  Main,
-  Title,
-  Description,
-  CodeTag,
-} from '../commons/sharedstyles'
-import Cards from '../commons/cards'
-import { getProps } from '@/services/utils.service';
+import { getProps } from '@/utils/serverUtils.service';
+import { PostsWrapper } from '@/stores/postStore';
+import { Card } from '@/commons/card';
 
 
-export default function Home() {
-  
+export default function Home({ posts }: PostsWrapper) {
   return (
-    <Container>
+    <div>
       <Head>
         <title>Blog</title>
-        <meta name="description" content="My blog" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Main>
-        <Title>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </Title>
-
-        <Description>
-          Get started by editing
-          <CodeTag>pages/index.tsx</CodeTag>
-        </Description>
-
-        <Cards />
-      </Main>
-    </Container>
-  )
+      <div>
+        {posts.map((post, index) => (
+          <Card key={index} card={post}></Card>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export async function getStaticProps() {

@@ -1,16 +1,17 @@
 import Head from "next/head";
-import { getProps } from "../../utils/data-utils";
 import React from "react";
-import { Card } from "../../components/card";
+import { PostData, PostsWrapper } from "@/stores/postStore";
+import { Card } from "@/commons/card";
+import { getProps } from "@/utils/serverUtils.service";
 
-export default function Page({ posts }) {
+export default function Page({ posts }: PostsWrapper) {
   return (
     <div>
       <Head>
         <title>Blog</title>
       </Head>
       <div>
-        {posts.map((post, index) => (
+        {posts.map((post: PostData, index: number) => (
           <Card key={index} card={post}></Card>
         ))}
       </div>

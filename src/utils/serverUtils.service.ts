@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import dayjs from "dayjs";
-import { MarkDown, Post } from "@/stores/postStore";
-export const DEFAULT_DATE_FORMAT = 'DD-MM-YYYY';
+import { PostData } from "@/stores/postStore";
+import { sortByDate } from "./clientUtils.service";
 
 export const getPath = (pathName: string) => {
   const pathArr = pathName.split("/");
@@ -31,11 +30,11 @@ export const buildStaticProps = (pathName: string, slug: string) => {
     "utf-8"
   );
 
-  const { data: frontmatter, content } = matter(markdownWithMeta);
+  const { data, content } = matter(markdownWithMeta);
 
   return {
     props: {
-      frontmatter,
+      metaData: data,
       slug,
       content,
     },
@@ -49,7 +48,7 @@ export const getProps = (folderPath: string) => {
   retrieveAllMdFiles(path.join(folderPath), paths);
 
   // Get slug and frontmatter from posts
-  const posts: Post[] = paths.map((currentPath: string) => {
+  const posts: PostData[] = paths.map((currentPath: string) => {
     const filename: string | undefined = currentPath?.split("/").pop();
     // Create slug
     const slug = filename?.replace(/.md$/, "");
@@ -71,13 +70,7 @@ export const getProps = (folderPath: string) => {
   };
 };
 
-export const formatDate = (date: string, format = DEFAULT_DATE_FORMAT) => {
-  return dayjs(date).format(format);
-}
 
-export const sortByDate = (date1: string, date2: string): any => {
-  return dayjs(date2).toDate().getTime() - dayjs(date1).toDate().getTime();
-};
 
 export const buildLink = (fullPath: string) => {
   const partPaths = fullPath.split("/");

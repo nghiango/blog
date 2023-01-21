@@ -1,5 +1,5 @@
-import Post from "@/commons/post";
 import { createContext, useContext, useMemo, useState } from "react";
+import React from 'react'
 
 export interface MetaData {
   title: string;
@@ -15,19 +15,30 @@ export interface MarkDown {
   metaData: MetaData;
 }
 
-export interface Post extends MarkDown {
+export interface PostData extends MarkDown {
   slug?: string;
   content?: string;
   link: string;
 }
-enum PostKind {
-  AUTOMATION = 'automation'
+
+export interface PostsWrapper {
+  posts: PostData[];
 }
-const usePostController = (posts: Post[]) => {
-  const [choosingKind, setChoosingKind] = useState<PostKind>();
+
+export interface PostWrapper {
+  post: PostData;
+}
+// enum PostKind {
+//   AUTOMATION = 'automation'
+// }
+
+// console.log(PostKind.AUTOMATION);
+
+const usePostController = (posts: PostData[]) => {
+  const [choosingKind, setChoosingKind] = useState<string>();
   const [postName, setPostName] = useState<string>();
   const choosingPosts = useMemo(() => {
-    return posts?.filter((post: Post) => post.metaData.kind === choosingKind);
+    return posts?.filter((post: PostData) => post.metaData.kind === choosingKind);
   }, [choosingKind]);
 
   const currentPost = useMemo(() => {
@@ -52,7 +63,7 @@ const PostContext = createContext<ReturnType<typeof usePostController>>({
 })
 
 interface PostProviderProps {
-  posts: Post[];
+  posts: PostData[];
   children: React.ReactNode;
 }
 export const PostProvider = ({posts, children}: PostProviderProps) => (

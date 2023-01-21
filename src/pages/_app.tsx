@@ -13,7 +13,6 @@ const theme: DefaultTheme = {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  console.log('hello', pageProps);
   
   return (
     <>
