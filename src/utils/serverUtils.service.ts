@@ -25,6 +25,7 @@ export const buildStaticPath = (pathName: string) => {
 };
 
 export const buildStaticProps = (pathName: string, slug: string) => {
+  
   const markdownWithMeta = fs.readFileSync(
     path.join(pathName, slug + ".md"),
     "utf-8"

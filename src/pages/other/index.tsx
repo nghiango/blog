@@ -10,7 +10,7 @@ export default function Page({ posts }: PostsWrapper) {
       <Head>
         <title>Blog</title>
       </Head>
-      <div className="mt-10">
+      <div>
         {posts.map((post: PostData, index: number) => (
           <Card key={index} card={post}></Card>
         ))}
@@ -20,5 +20,5 @@ export default function Page({ posts }: PostsWrapper) {
 }
 
 export async function getStaticProps() {
-  return getProps('posts/automation');
+  return getProps('posts/other');
 }

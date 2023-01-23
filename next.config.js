@@ -9,4 +9,8 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
   },
+  env: {
+    BASE_PATH: ''
+  },
+  distDir: 'build',
 }

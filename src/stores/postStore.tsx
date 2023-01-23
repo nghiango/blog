@@ -5,7 +5,7 @@ export interface MetaData {
   title: string;
   date: string;
   excerpt: string;
-  tags: string;
+  tag: string;
   kind: string;
   author: string;
   cover_image: string;
@@ -39,11 +39,11 @@ const usePostController = (posts: PostData[]) => {
   const [postName, setPostName] = useState<string>();
   const choosingPosts = useMemo(() => {
     return posts?.filter((post: PostData) => post.metaData.kind === choosingKind);
-  }, [choosingKind]);
+  }, [choosingKind, posts]);
 
   const currentPost = useMemo(() => {
     return posts?.find((post) => post.slug === postName);
-  }, [postName]);
+  }, [postName, posts]);
 
   return {
     posts,

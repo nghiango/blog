@@ -8,7 +8,9 @@ export function CodeBlock(props: any) {
   const match = /language-(\w+)/.exec(className);
   return !props.inline && match ? (
     <div className="code-block__block">
-      <CopyToClipboard  text={props.value}><FaRegCopy/></CopyToClipboard>
+      <div className="code-block__copy-func" >
+        <CopyToClipboard text={props.value}><FaRegCopy/></CopyToClipboard>
+      </div>
       <SyntaxHighlighter language={match[1]} style={darcula}>{props.value}</SyntaxHighlighter>
     </div>
   ) : (

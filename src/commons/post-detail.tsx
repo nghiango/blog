@@ -2,25 +2,28 @@ import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "./code-block";
 import rehypeRaw from "rehype-raw";
 import React from "react";
-import { PostWrapper } from "@/stores/postStore";
+import { PostData } from "@/stores/postStore";
+import styled from "styled-components";
 
+const PostDetailContainer = styled.div`
 
-export function PostDetail({post}: PostWrapper) {
+`
+export function PostDetail({metaData, content}: PostData) {
+
   return (
-    <>
-      <div className="card card-page">
+      <PostDetailContainer>
         <div className="post__header">
-          <h1 className="post__title post--padding">{post?.metaData.title}</h1>
+          <h1 className="post__title post--padding">{metaData.title}</h1>
           <div className="post__author post--padding">
             <p>
-              By <span className="font-bold">{post?.metaData.author || 'Nghia Ngo'}</span>
+              By <span className="font-bold">{metaData.author || 'Nghia Ngo'}</span>
             </p>
-            <span className="text-sm">{post?.metaData.date}</span>
+            <span className="text-sm">{metaData.date}</span>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="post__image-cover"
-            src={`${process.env.BASE_PATH}${post?.metaData.cover_image}`}
+            src={`${process.env.BASE_PATH}${metaData.cover_image}`}
             alt="image-cover"
           />
         </div>
@@ -33,10 +36,9 @@ export function PostDetail({post}: PostWrapper) {
             }}
             rehypePlugins={[rehypeRaw]}
           >
-            {post?.content || 'hello'}
+            {content || 'hello'}
           </ReactMarkdown>
         </div>
-      </div>
-    </>
+      </PostDetailContainer>
   );
 }

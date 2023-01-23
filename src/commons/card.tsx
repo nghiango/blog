@@ -10,7 +10,8 @@ interface CardProps {
 export function Card(props: CardProps) {
   const { card } = props;
   const renderTags = () => {
-    return Array.from(card.metaData.tags).map((tag: string, index: number) => {
+    const tags = card?.metaData?.tag?.split(',');
+    return (tags||[]).map((tag: string, index: number) => {
       return (
         <span
           key={index}
@@ -37,9 +38,7 @@ export function Card(props: CardProps) {
               {card.metaData.title}
             </h3>
           </Link>
-          <span className="inline-flex w-fit justify-center px-2 py-1 text-xs font-bold leading-none text-indigo-100 bg-indigo-700 rounded">
-            {card.metaData.tags}
-          </span>
+
           <div className="flex">{renderTags()}</div>
 
           <p className="mt-2">{card.metaData.excerpt}</p>
