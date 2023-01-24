@@ -4,7 +4,6 @@ author: "Nghia Ngo"
 date: "2023-01-24"
 excerpt: "Some problems in developer life"
 tag: "TS"
-cover_image: "/images/posts/img5.jpg"
 ---
 Problems in develop
 

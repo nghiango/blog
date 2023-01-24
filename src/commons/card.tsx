@@ -30,7 +30,7 @@ export function Card(props: CardProps) {
           <Link href={`${card.link}`} passHref>
             <img
               className="inset-0 h-full w-full object-cover object-center"
-              src={`${process.env.BASE_PATH}${card.metaData.cover_image}`}
+              src={`${process.env.BASE_PATH}${card.metaData.cover_image ? card.metaData.cover_image : '/images/posts/img5.jpg'}`}
               alt='cover-image'
             />
           </Link>

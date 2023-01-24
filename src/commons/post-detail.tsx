@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "./code-block";
 import rehypeRaw from "rehype-raw";
@@ -21,12 +22,13 @@ export function PostDetail({metaData, content}: PostData) {
             </p>
             
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {metaData.cover_image ? (
           <img
             className="post__image-cover"
             src={`${process.env.BASE_PATH}${metaData.cover_image}`}
             alt="image-cover"
-          />
+          />) : null}
+
         </div>
         <div className="post__body post--padding">
           <ReactMarkdown
