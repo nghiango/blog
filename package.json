@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:stg": "next build && next export -o docs && touch ./docs/.nojekyll && cat CNAME >> ./docs/CNAME && git add -f docs && git commit -m 'update static page' && git push",
     "start": "next start",
     "lint": "next lint"
   },

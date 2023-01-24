@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { formatDate } from "@/utils/clientUtils.service";
 import { PostData } from "@/stores/postStore";
 import Link from "next/link";
@@ -26,10 +27,13 @@ export function Card(props: CardProps) {
     <>
       <div className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
         <div className="h-64 w-auto md:w-1/2">
-          <img
-            className="inset-0 h-full w-full object-cover object-center"
-            src={`${process.env.BASE_PATH}${card.metaData.cover_image}`}
-          />
+          <Link href={`${card.link}`} passHref>
+            <img
+              className="inset-0 h-full w-full object-cover object-center"
+              src={`${process.env.BASE_PATH}${card.metaData.cover_image}`}
+              alt='cover-image'
+            />
+          </Link>
         </div>
 
         <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">

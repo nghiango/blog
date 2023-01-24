@@ -42,10 +42,11 @@ export const buildStaticProps = (pathName: string, slug: string) => {
   };
 };
 
-
 export const getProps = (folderPath: string) => {
   // Get files from the posts dir
   const paths: string[] = [];
+  console.log('heck', folderPath);
+  
   retrieveAllMdFiles(path.join(folderPath), paths);
 
   // Get slug and frontmatter from posts
@@ -87,7 +88,11 @@ export const buildLink = (fullPath: string) => {
   return link;
 };
 
+const ignorePaths: string[] = ['posts/info'];
 export const retrieveAllMdFiles = (currentPath: string, filePaths: string[]) => {
+  if (ignorePaths.includes(currentPath)) {
+    return;
+  }
   const paths = fs.readdirSync(currentPath);
   paths.forEach((pathName) => {
     const fullPath = path.join(currentPath, pathName);

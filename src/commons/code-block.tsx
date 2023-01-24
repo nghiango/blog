@@ -11,7 +11,7 @@ export function CodeBlock(props: any) {
       <div className="code-block__copy-func" >
         <CopyToClipboard text={props.value}><FaRegCopy/></CopyToClipboard>
       </div>
-      <SyntaxHighlighter language={match[1]} style={darcula}>{props.value}</SyntaxHighlighter>
+      <SyntaxHighlighter showLineNumbers language={match[1]} style={darcula}>{props.value}</SyntaxHighlighter>
     </div>
   ) : (
     <code className={className} {...props}>

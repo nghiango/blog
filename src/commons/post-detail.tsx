@@ -15,10 +15,11 @@ export function PostDetail({metaData, content}: PostData) {
         <div className="post__header">
           <h1 className="post__title post--padding">{metaData.title}</h1>
           <div className="post__author post--padding">
+          <span className="text-sm">Published on {metaData.date}</span>
             <p>
               By <span className="font-bold">{metaData.author || 'Nghia Ngo'}</span>
             </p>
-            <span className="text-sm">{metaData.date}</span>
+            
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
