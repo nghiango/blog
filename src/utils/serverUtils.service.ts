@@ -5,12 +5,12 @@ import { PostData } from "@/stores/postStore";
 import { sortByDate } from "./clientUtils.service";
 
 export const getPath = (pathName: string) => {
-  const pathArr = pathName.split("/");
+  const pathArr = pathName.split(path.sep);
   return `posts/${pathArr[pathArr.length - 1]}`;
 };
 
 export const buildStaticPath = (pathName: string) => {
-  const files = fs.readdirSync(path.join(pathName));
+  const files = fs.readdirSync(path.normalize(pathName));
   const paths = files.map((filename) => ({
     params: {
       slug: filename.replace(".md", ""),
@@ -27,7 +27,7 @@ export const buildStaticPath = (pathName: string) => {
 export const buildStaticProps = (pathName: string, slug: string) => {
   
   const markdownWithMeta = fs.readFileSync(
-    path.join(pathName, slug + ".md"),
+    path.normalize(path.join(pathName, slug + ".md")),
     "utf-8"
   );
 
@@ -45,17 +45,16 @@ export const buildStaticProps = (pathName: string, slug: string) => {
 export const getProps = (folderPath: string) => {
   // Get files from the posts dir
   const paths: string[] = [];
-  console.log('heck', folderPath);
-  
+
   retrieveAllMdFiles(path.join(folderPath), paths);
 
   // Get slug and frontmatter from posts
   const posts: PostData[] = paths.map((currentPath: string) => {
-    const filename: string | undefined = currentPath?.split("/").pop();
+    const filename: string | undefined = currentPath?.split(path.sep).pop();
     // Create slug
     const slug = filename?.replace(/.md$/, "");
     // Get frontmatter
-    const markdownWithMeta = fs.readFileSync(currentPath, "utf-8");
+    const markdownWithMeta = fs.readFileSync(path.normalize(currentPath), "utf-8");
 
     const matters = matter(markdownWithMeta) as any;
     return {
@@ -75,7 +74,7 @@ export const getProps = (folderPath: string) => {
 
 
 export const buildLink = (fullPath: string) => {
-  const partPaths = fullPath.split("/");
+  const partPaths = fullPath.split(path.sep);
   let link = "";
   partPaths.forEach((partPath: string, index: number) => {
     if (index) {
