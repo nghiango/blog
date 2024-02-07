@@ -1,3 +1,11 @@
+---
+title: "Usual problems in development"
+author: "Nghia Ngo"
+date: "2024-02-07"
+excerpt: "The problem that we usually meet in development"
+tag: "nodejs"
+cover_image: "/images/posts/img5.jpg"
+---
 Problems in develop
 
 - How to get keys of an interface?
@@ -6,7 +14,7 @@ Problems in develop
 
 - How to cast string to an element of interface?
 
-  ```js
+  ```ts
   interface Translation {
     en: string;
     de: string;

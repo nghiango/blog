@@ -66,6 +66,11 @@
   .code-block__block {
     position: relative;
   }
+  .code-block__code {
+    color: #ff1e1edb;
+    font-style: italic;
+    font-weight: 325;
+  }
   .code-block__copy-func {
     position: absolute;
     right: 20px;

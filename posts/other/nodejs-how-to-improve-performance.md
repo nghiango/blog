@@ -1,5 +1,5 @@
 ---
-title: "How to improve performace with child proccess"
+title: "How to improve performance with child process"
 author: "Nghia Ngo"
 date: "2022-01-06"
 excerpt: "In this excerpt I will show you what is the child process and what is the effect when we use child proccess"
