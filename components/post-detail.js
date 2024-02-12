@@ -1,6 +1,8 @@
 import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "../components/code-block";
 import rehypeRaw from "rehype-raw";
+import Image from "next/image";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 export function PostDetail({
                                frontmatter: {title, date, cover_image, author},
@@ -30,6 +32,12 @@ export function PostDetail({
                         components={{
                             code: ({node, inline, className, children, ...props}) => (
                                 <CodeBlock value={children} className={className} {...props} />
+                            ),
+                            p: ({node, inline, className, children, ...props}) => (
+                                <p {...props}  className={`${className} code-block__paragraph`}>{children}</p>
+                            ),
+                            a: ({node, inline, className, children, ...props}) => (
+                                <a {...props} className={`${className} code-block__link`}>{children}</a>
                             ),
                         }}
                     >

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 export function Card({ card }) {
   return (
@@ -8,7 +10,7 @@ export function Card({ card }) {
           <img
             className="inset-0 h-full w-full object-cover object-center"
             src={`${process.env.BASE_PATH}${card.frontmatter.cover_image}`}
-          />
+           alt='cover_image'/>
         </div>
 
         <div className="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">

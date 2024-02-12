@@ -14,7 +14,7 @@ export function CodeBlock(props) {
         );
     }
     return (
-        <code {...props} className={props.className || 'code-block__code'} >
+        <code {...props} className={props.className || 'code-block__code'}>
             {props.value.toString()}
         </code>)
 }

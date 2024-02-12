@@ -24,8 +24,14 @@
     font-size: 0.67em;
     line-height: normal;
   }
-  a {
-    @apply text-blue-600 underline;
+  h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  ul {
+    list-style: disc;
+    padding: revert;
+    margin: revert;
   }
 }
 @tailwind components;
@@ -70,6 +76,13 @@
     color: #ff1e1edb;
     font-style: italic;
     font-weight: 325;
+  }
+  .code-block__link {
+    text-decoration: underline !important;
+    color: blue;
+  }
+  .code-block__paragraph {
+    margin-bottom: 16px;
   }
   .code-block__copy-func {
     position: absolute;

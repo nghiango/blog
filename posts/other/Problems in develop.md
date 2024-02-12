@@ -1,7 +1,7 @@
 ---
 title: "Usual problems in development"
 author: "Nghia Ngo"
-date: "2024-02-07"
+date: 'Feb 07, 2024'
 excerpt: "The problem that we usually meet in development"
 tag: "nodejs"
 cover_image: "/images/posts/img5.jpg"
