@@ -12,6 +12,7 @@
 /.next/
 /out/
 /docs/
+/nginx/dist/
 
 # production
 /build

@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && cp -R ./docs/* ./nginx/dist",
     "build:stg": "next build && touch ./docs/.nojekyll && cat CNAME >> ./docs/CNAME && git add -f docs && git commit -m 'update static page' && git push",
     "start": "next start",
     "lint": "next lint"
