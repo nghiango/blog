@@ -1,6 +1,6 @@
 ---
 title: 'The combination between React Hook Form and Yup'
-date: 'Feb 07, 2022'
+date: 'Feb 07, 2024'
 excerpt: 'Guide to use React Hook Form with Yup'
 tag: 'reactjs'
 author: 'Nghia Ngo'
