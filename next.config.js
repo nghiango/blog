@@ -3,14 +3,6 @@ const  {
 } = process.env;
 const basePath = NODE_ENV === 'production' ? '/blog' : '';
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/blog/images/:path*',
-        destination: '/images/:path*',
-      },
-    ]
-  },
   env: {
     BASE_PATH: '',
   },
@@ -19,7 +11,8 @@ module.exports = {
     path: '',
   },
   reactStrictMode: true,
-  distDir: 'build',
+  distDir: NODE_ENV === 'production' ? 'docs':'build',
   assetPrefix: '/',
-  basePath: ''
+  basePath: '',
+  output: NODE_ENV === 'production' ? 'export':'standalone',
 }
