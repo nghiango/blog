@@ -1,14 +1,9 @@
 import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "../components/code-block";
 import rehypeRaw from "rehype-raw";
-import Image from "next/image";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
-export function PostDetail({
-                               frontmatter: {title, date, cover_image, author},
-                               slug,
-                               content,
-                           }) {
+export function PostDetail({frontmatter: {title, date, cover_image, author}, slug, content}) {
     return (
         <>
             <div className="card card-page">
@@ -34,10 +29,10 @@ export function PostDetail({
                                 <CodeBlock value={children} className={className} {...props} />
                             ),
                             p: ({node, inline, className, children, ...props}) => (
-                                <p {...props}  className={`${className} code-block__paragraph`}>{children}</p>
+                                <p {...props} className={`${className || ''} code-block__paragraph`}>{children}</p>
                             ),
                             a: ({node, inline, className, children, ...props}) => (
-                                <a {...props} className={`${className} code-block__link`}>{children}</a>
+                                <a {...props} className={`${className || ''} code-block__link`}>{children}</a>
                             ),
                         }}
                     >

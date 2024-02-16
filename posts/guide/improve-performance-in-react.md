@@ -1,0 +1,8 @@
+---
+title: 'Ways to improve performance in React'
+date: 'Feb 07, 2024'
+excerpt: 'Performance is always a concern when we build a project. Here are some my experience to improve performance in React.'
+tag: 'reactjs'
+author: 'Nghia Ngo'
+cover_image: '/images/posts/how-you-understand-nodejs/nodejs-cover.jpeg'
+---

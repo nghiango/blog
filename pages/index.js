@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
-import { sortByDate, retrieveAllMdFiles, buildLink } from "../utils";
+import { buildLink, retrieveAllMdFiles, sortByDate } from "../utils";
 import { Card } from "../components/card";
 
 export default function Home({ posts }) {
