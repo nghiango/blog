@@ -2,7 +2,6 @@ import { Popover, Transition } from "@headlessui/react";
 import {
   BookmarkAltIcon,
   HomeIcon,
-  MenuIcon,
   RefreshIcon,
   ShieldCheckIcon,
   ViewGridIcon,
@@ -10,18 +9,19 @@ import {
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
+
 const resources = [
   {
     name: "Guides",
     description: "Guide you how implement concepts that I know",
-    href: "/?guides=true",
+    href: "/?search=guide",
     icon: BookmarkAltIcon,
   },
   {
     name: "Security",
     description: "Show you some security information",
-    href: "/?security=true",
+    href: "/?search=security",
     icon: ShieldCheckIcon,
   },
   {
@@ -37,21 +37,11 @@ const resources = [
     icon: RefreshIcon,
   },
 ];
-// const recentPosts = [
-//   { id: 1, name: "Boost your conversion rate", href: "#" },
-//   {
-//     id: 2,
-//     name: "How to use search engine optimization to drive traffic to your site",
-//     href: "#",
-//   },
-//   { id: 3, name: "Improve your customer experience", href: "#" },
-// ];
-
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header({ what }) {
+export const Header = memo(() => {
   return (
     <Popover className="fixed bg-white w-full z-10">
       <div className="mx-auto px-4 sm:px-6 position-fixed">
@@ -265,36 +255,5 @@ export default function Header({ what }) {
       </Transition>
     </Popover>
   );
-}
-
-export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join("posts"));
-
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".md", ""),
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params: { slug } }) {
-  const markdownWithMeta = fs.readFileSync(
-    path.join("posts", slug + ".md"),
-    "utf-8"
-  );
-
-  const { data: frontmatter, content } = matter(markdownWithMeta);
-
-  return {
-    props: {
-      frontmatter,
-      slug,
-      content,
-    },
-  };
-}
+});
+Header.displayName = "Header";

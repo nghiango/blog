@@ -1,8 +1,9 @@
 import fs from "fs-extra";
 import path from "path";
 
-export const sortByDate = (a, b) => {
-  return new Date(b.frontmatter.date) - new Date(a.frontmatter.date);
+export const sortByDate = (a: any, b: any): number => {
+  // return new Date(b.frontmatter.date) - new Date(a.frontmatter.date);
+  return 0;
 };
 
 export const buildLink = (fullPath) => {

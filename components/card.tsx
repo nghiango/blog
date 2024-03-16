@@ -1,15 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
-import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
-
-export function Card({ card }) {
+import { IPost } from '../interfaces/post';
+interface IProps {
+  card: IPost;
+}
+export const Card = ({ card }: IProps) =>{
   return (
     <>
       <div className="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl  mt-4 w-100 mx-2">
         <div className="h-64 w-auto md:w-1/2">
           <img
             className="inset-0 h-full w-full object-cover object-center"
-            src={`${process.env.BASE_PATH}${card.frontmatter.cover_image}`}
+            src={`${card.frontmatter.cover_image}`}
            alt='cover_image'/>
         </div>
 
