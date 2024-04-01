@@ -519,6 +519,45 @@ describe('HomePage', () => {
 })
 ```
 
+## Test function inside component
+
+<div class="code-block__title">Homepage.tsx</div>
+
+```tsx
+const HomePage = () => {
+    const [count, setCount] = useState(0);
+
+    const increase = () => {
+        setCount(count + 1);
+    }
+
+    return (
+        <div>
+          <h1>Count: {count}</h1>
+          <Children increase={increase}/>
+        </div>
+    );
+}
+```
+
+<div class="code-block__title">Homepage.test.tsx</div>
+
+```tsx
+jest.mock('./components', () => {
+  const Children = (props) => <div data-testid="mock-Chirem" onClick={props.increase} {...props} />;
+  return {
+    Children
+  };
+});
+
+describe('HomePage', () => {
+  test('render correctly', () => {
+    const { getByTestId } = render(<HomePage/>);
+  })
+})
+```
+
+
 ## How to remove data-testid for production
 
 We can use `babel-plugin-react-remove-properties` to remove `data-testid` attribute in production.

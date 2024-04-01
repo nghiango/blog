@@ -1,6 +1,16 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "@next/next/no-img-element": "off"
-  }
+    "@next/next/no-img-element": "off",
+    "unicorn/better-regex": "error",
+    "unicorn/catch-error-name": "error",
+    "unicorn/consistent-destructuring": "error",
+    "unicorn/consistent-function-scoping": "error",
+    "unicorn/custom-error-definition": "error",
+    "unicorn/error-message": "error",
+    "unicorn/escape-case": "error"
+  },
+  "plugins": [
+    "unicorn"
+  ]
 }

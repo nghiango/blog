@@ -1,8 +1,9 @@
-import "../styles/globals.css";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Header } from '../components/header';
+import '../styles/globals.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Header } from '../components/header'
 
 const queryClient = new QueryClient()
+
 function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         </main>
       </div>
     </QueryClientProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
